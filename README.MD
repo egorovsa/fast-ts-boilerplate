@@ -1,0 +1,1 @@
+Fast boilerplate with TypeScript and Jest and Webpack for building
