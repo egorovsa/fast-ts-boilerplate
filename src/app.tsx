@@ -3,20 +3,24 @@ import { FormattedMessage, } from 'react-intl';
 import { LocaleService } from '@core/services/locale-service';
 import * as styles from '@common/styles/style.less';
 import { css, StyleSheet } from 'aphrodite';
+import { connect } from 'react-redux';
+import { ApplicationState } from '@core/store';
 
 export interface Props {
+    currentLang?: string
 }
 
 export interface State {
 }
 
+// Aphrodite.js example using
 const myStyle = StyleSheet.create({
     test: {
         backgroundColor: '#ddd'
     }
 });
 
-export class App extends React.Component<Props, State> {
+class Component extends React.Component<Props, State> {
     static defaultProps: Props = {};
 
     // state: State = {};
@@ -36,7 +40,7 @@ export class App extends React.Component<Props, State> {
 
                 <a
                     href="javascript:void(0);"
-                    className={'lang-selectors ' + (css(myStyle.test))}
+                    className={'lang-selectors ' + (this.props.currentLang === 'en' && css(myStyle.test))}
                     onClick={() => {
                         LocaleService.changeLocale('en');
                     }}
@@ -46,7 +50,7 @@ export class App extends React.Component<Props, State> {
 
                 <a
                     href="javascript:void(0);"
-                    className={'lang-selectors ' + (css(myStyle.test))}
+                    className={'lang-selectors ' + (this.props.currentLang === 'ru' && css(myStyle.test))}
                     onClick={() => {
                         LocaleService.changeLocale('ru');
                     }}
@@ -57,3 +61,9 @@ export class App extends React.Component<Props, State> {
         );
     }
 }
+
+export const App = connect((store: ApplicationState) => {
+    return {
+        currentLang: store.locale.lang
+    };
+})(Component);
