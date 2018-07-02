@@ -1,10 +1,45 @@
 {
-	"compilerOptions": {
-		"target": "es5",
-		"lib": [
-			"dom",
-			"es5",
-			"es2015"
-		]
-	}
+    "compilerOptions": {
+        "module": "esnext",
+        "jsx": "react",
+        "target": "es5",
+        "outDir": "dist",
+        "moduleResolution": "node",
+        "sourceMap": false,
+        "noImplicitAny": false,
+        "rootDir": "src",
+        "typeRoots": [
+            "./node_modules/@types/"
+        ],
+        "noEmitOnError": true,
+        "removeComments": false,
+        "diagnostics": true,
+        "noUnusedLocals": true,
+        "lib": [
+            "dom",
+            "es6"
+        ],
+        "baseUrl": ".",
+        "paths": {
+            "@common/*": [
+                "./src/common/*"
+            ],
+            "@core/*": [
+                "./src/core/*"
+            ],
+            "@services/*": [
+                "./src/core/services/*"
+            ]
+        }
+    },
+    "exclude": [
+        "node_modules",
+        "./src/**/__tests__/*",
+        "build",
+        "scripts",
+        "acceptance-tests",
+        "webpack",
+        "jest",
+        "src/setupEnzyme.ts"
+    ]
 }

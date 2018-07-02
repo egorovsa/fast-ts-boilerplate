@@ -1,0 +1,4 @@
+export const enum LOCALES_CONSTANTS {
+    CHANGE_LANGUAGE = 'CHANGE_LANGUAGE',
+
+}
