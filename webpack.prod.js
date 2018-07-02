@@ -35,7 +35,7 @@ module.exports = merge(
                             options: {
                                 modules: true,
                                 namedExport: true,
-                                localIdentName: "bea___[local]"
+                                localIdentName: "name___[local]"
                             },
                         },
                         'postcss-loader',
